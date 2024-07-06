@@ -11,3 +11,16 @@ RESOURCES
 -------------------------------------------------------------------------------
 
 https://github.com/dannyvankooten/1brc
+
+https://github.com/gunnarmorling/1brc/discussions/46
+
+NOTES
+-------------------------------------------------------------------------------
+
+- Convert float to int.
+
+- Efficient hash and map.
+
+- Chunk reads.
+
+- Parallelization.
