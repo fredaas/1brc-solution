@@ -25,8 +25,10 @@ static Map map = {
     .count = 0
 };
 
-static inline bool read_lines(char *buff, FILE *fh, u32 count)
+static inline u32 read_lines(char *buff, FILE *fh, u32 count)
 {
+    char *start = buff;
+
     u32 lines_read = 0;
     s32 c;
     while ((c = getc(fh)) != EOF)
@@ -38,7 +40,8 @@ static inline bool read_lines(char *buff, FILE *fh, u32 count)
             break;
     }
     *buff = '\0';
-    return c != EOF;
+
+    return buff - start;
 }
 
 static inline void map_add(char *name, u32 id, double val)
@@ -92,6 +95,7 @@ void run_solution_1(char *path)
     while (read_lines(buff, fh, 500))
     {
         char *ptr = buff;
+
         while (*ptr)
         {
             char *sep = strchr(ptr, ',');
