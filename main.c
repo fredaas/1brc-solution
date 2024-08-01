@@ -9,11 +9,15 @@ f64 walltime(void)
 
 typedef void (*solution_fn_t)(char *path);
 
-void bench(solution_fn_t fn)
+#define bench(fn) do { \
+    __bench(fn, #fn); \
+} while (0)
+
+void __bench(solution_fn_t fn, char *fname)
 {
     f64 start = walltime();
     fn(MEASUREMENTS_PATH);
-    printf("%.04lf\n", walltime() - start);
+    printf("%s: %.04lf\n", fname, walltime() - start);
 }
 
 int main(int argc, char const *argv[])
